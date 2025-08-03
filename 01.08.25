@@ -1,0 +1,39 @@
+motto: reduce the noise
+
+
+
+1) Weather Data
+Temperature, Humidity, Wind, Rain, Snow etc.
+
+Gets a score? for the weather using these values ?
+Creates a required breathability or resistance score ????
+
+
+2) Clothing Data
+Name,Type,Color,Fabric Composition
+
+Through fabric composition makes a breathability and resistance score and compares it with weather data, matches the pieces. Then makes a breathability or resistance score of total outfit, gives output of why it works and why it does not in the case of user choosing item themselves.
+
+GETS THE WEATHER SCORE and NEEDS A CERTAIN BREATHABILITY & RESISTANCE SCORE, IF AN ITEM IS NOT IN THE INTERVAL, ELIMINATES THE ITEM 
+
+
+3) Subjective Thermal Comfort
+
+Open text comments and analyze them with natural language processing
+OR USE TAGS
+a small NLP model can start detecting phrases like "sweaty," "breezy," "comfortable," etc and map them to model adjustments.Each user’s feedback helps move them toward the right cluster or even create their own cluster over time.
+Creates a personal comfort model.
+
+4) Color Combination 
+
+Trains on a data set of color combinations and determines the exposure of colors and automatically changes these exposure or color timbre values flexibly with their trained data. Again working with color_scores
+based on RGB values or HSL values?
+
+
+5) Style Preference
+MAKE USER USE TAGS “CHIC” “CASUAL” ETC.
+
+CONCERNS:
+how will the system know about accessories? ex: a tie is worn with a shirt
+
+
