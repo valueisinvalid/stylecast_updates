@@ -15,7 +15,7 @@ Name,Type,Color,Fabric Composition
 Through fabric composition makes a breathability and resistance score and compares it with weather data, matches the pieces. Then makes a breathability or resistance score of total outfit, gives output of why it works and why it does not in the case of user choosing item themselves.
 
 GETS THE WEATHER SCORE and NEEDS A CERTAIN BREATHABILITY & RESISTANCE SCORE, IF AN ITEM IS NOT IN THE INTERVAL, ELIMINATES THE ITEM 
-
+train a regression model using user comfort feedback to fine-tune this
 
 3) Subjective Thermal Comfort
 
