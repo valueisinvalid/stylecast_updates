@@ -1,7 +1,5 @@
 motto: reduce the noise
 
-
-
 1) Weather Data
 Temperature, Humidity, Wind, Rain, Snow etc.
 
@@ -34,6 +32,17 @@ based on RGB values or HSL values?
 MAKE USER USE TAGS “CHIC” “CASUAL” ETC.
 
 CONCERNS:
-how will the system know about accessories? ex: a tie is worn with a shirt
+how will the system know about accessories? ex: a tie is worn with a shirt / dependency rules
 
+
+| Model                  | Input                             | Output                           | Method                   |
+| ---------------------- | --------------------------------- | -------------------------------- | ------------------------ |
+| Weather-to-Requirement | Weather data                      | Breathability & resistance score | Regression               |
+| Clothing-to-Scores     | Fabric composition                | Breathability & resistance score | Lookup or ML             |
+| Color Model            | RGB/HSL values                    | Compatibility score              | NN or clustering         |
+| Style Model            | Clothing tags + user tag          | Style match                      | Classifier or similarity |
+| Comfort Model          | User feedback + weather + clothes | User cluster / adjustments       | NLP + clustering         |
+
+
+RESEARCH ON WHICH METHOD PEOPLE USED FOR SUCH MODELS!!!
 
