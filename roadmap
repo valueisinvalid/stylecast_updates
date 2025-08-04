@@ -1,0 +1,61 @@
+Sample 3-Week Roadmap (Aug 5 – Aug 25)
+ data processing ➝ logic ➝ models ➝ user feedback integration
+
+Week 1: Weather–Clothing Logic Layer (Aug 5–11)
+Goal: Match clothes with weather using breathability/resistance scoring logic.
+ Tasks
+	•	 Finalize CSV structure for clothes: name, type, fabric %, color, etc.
+	•	 Write Python function to calculate breathability and resistance using fabric composition.
+	•	 Parse weather data (temp, humidity, wind, etc.) and create a scoring system:   High temp + high humidity → need breathability > 70
+	•	 Write filtering logic: eliminate clothing pieces not matching the need
+	•	 Output: clothing pieces matching current weather + explain why
+ Tools
+	•	pandas
+	•	rule-based logic (no ML yet)
+	•	OpenWeatherMap API (optional for real weather)
+ Output
+"These items match today’s weather because the combined breathability score is 82, above the 70 requirement."
+
+Week 2: Color Harmony + Style Tags (Aug 12–18)
+Goal: Use datasets to train models for color matching + recognize user style tags.
+ Tasks
+	•	 Use COLOURlovers palettes to train a simple model → input: outfit RGBs/HSLs → output: harmony score (logistic regression first)
+	•	 For now: limit to 2-piece outfits
+	•	 Define style tag list: “chic,” “casual,” “comfy,” “grunge,” etc.
+	•	 User selects preferred tags OR you cluster them from their liked outfits later
+	•	 Style tags become part of filtering logic
+ Tools
+	•	scikit-learn (logistic regression for color matching)
+	•	HSL/RGB feature extraction
+	•	maybe cosine similarity for style tag clustering
+ Output
+"This fit is casual and scores 82% in color harmony. It fits weather needs and matches your preferred tags."
+
+ Week 3: Personal Feedback Integration (Aug 19–25)
+Goal: Start building the learning feedback loop from user comfort and preferences.
+Tasks
+	•	 Let user rate outfit (1–5 stars) and optionally give feedback: e.g., “Too warm,” “Loved the colors,” “Felt sweaty”
+	•	 Use small NLP pipeline to extract comfort phrases (e.g., “cold,” “breezy,” “sweaty”) from comments → map to personal temperature profile
+	•	 Store user profile: thermal_profile = "cold-sensitive" etc.
+	•	 Adjust the required breathability/resistance dynamically per user
+	•	 Define clusters: "cold-sensitive", "heat-tolerant", "neutral"
+ Tools
+	•	NLTK or spaCy for lightweight phrase matching
+	•	pandas for user profile updates
+	•	JSON or SQLite to store user profiles
+ Output
+"We've adjusted your personal profile. We'll now prefer warmer outfits due to your past feedback."
+
+ BONUS / Week 4 Ideas
+If you're ahead of schedule:
+	•	Start experimenting with POG-like encoder–decoder architecture for personalized generation.
+	•	Add basic accessory logic (e.g., if tie → must pair with collared shirt).
+	•	Begin user interface mockups (even just on Streamlit or Figma).
+
+Final Thoughts
+research & prototyping, not shipping a full product yet. Keep it modular:
+	•	Week 1 = logic
+	•	Week 2 = data models
+	•	Week 3 = adaptation
+Building a system that learns and that includes learning while building it.
+
