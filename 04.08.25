@@ -1,0 +1,27 @@
+04.08.25
+
+Dataset overviews
+
+Most of the thermal comfort datasets are based on indoor environments & they exclude the clothing factor 
+
+
+IQON3000 is a good start to analyze how they managed to implement positive and negative fashion combinations.
+&
+https://arxiv.org/pdf/1708.04014
+https://arxiv.org/pdf/1905.01866
+
+
+COLOURlovers palettes are a good source for color combination dataset, merely because it’s based on people’s view, they used logistic regression to the dataset before.
+
+
+POG: an encoder-decoder model to generate
+personalized fashion outfits, which takes into account both
+outfit compatibility and user personalization. It makes fash-
+ion recommendations by generating personalized outfits
+based on users’ recent behaviors
+
+Responds to weather.
+Learns personal comfort.
+Understands color harmony.
+Adapts to style tags.
+Lets users give feedback.
