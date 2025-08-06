@@ -1,0 +1,48 @@
+Wrote the basic logic code with CHATGPT, used 
+- my own small clothing database for start
+- used meteoblue API because it's free for 5000 calls
+
+
+
+downloaded the IQON database, IQON used to be a japanese app where people made combinations from item's and it raised around 3.2M. I got a database:
+
+"We created a new large dataset for personalized clothing matching. In particular, we crawled our data from the popular fashion web service Iqon (www.iqon.jp),
+where users are encouraged to create outfits by coordinating fashion items from complementary categories (e.g., tops, bottoms, shoes and accessories). 
+The created IQON3000 contains 308,347 outfits created by 3,568 users with 672,335 fashion items."
+
+https://anonymity2019.wixsite.com/gp-bpr
+https://thebridge.jp/en/2013/02/iqon-fundraises-300-million-yen
+
+will try to use this database for my model training and testing my basic logic code.
+
+USED & MADE 
+clothing_scoring.py
+weather_module.py
+outfit_matching.py
+main.py (to test my logic)
+clothing_dataset.csv
+
+
+
+1. Weather-to-Requirement Model
+Goal	Status	Next Step
+Parse weather (temp, humidity, wind, etc.)	✅ Done (with simulated weather) Pull from Meteoblue
+Create rule-based breathability/resistance scores	✅ Done	🔜 Turn into a function module for reuse
+Output the requirements & explain them	✅ Done	🔜 Needs to provide better explanation
+
+
+2. Clothing-to-Scores Model
+Goal	Status	Next Step
+Parse fabric composition → materials	✅ Done	🔜 Extend parser to cover edge cases & new fabrics
+Map to breathability/resistance scores	✅ Done	✅ Working well
+Eliminate non-matching items	✅ Done	✅ Already filtering
+Create outfit combinations	✅ ✅ ✅ DONE (2- and 3-piece outfits logic added)
+
+3. Subjective Thermal Comfort Model (Week 3)
+Goal	Status	Next Step
+Accept user ratings (1–5 stars)	🚧 Not yet	🔜 Add CLI or Streamlit input
+Extract feedback like “too warm,” “sweaty” etc.	🚧 Not yet	🔜 Build mini NLP parser (using spaCy or rule-based)
+Cluster users: cold-sensitive / heat-tolerant	🚧 Not yet	🔜 Simple rule-based for now (advance to clustering later)
+Adjust thresholds dynamically per user	🚧 Not yet	🔜 Connect personal profile to scoring logic
+
+
