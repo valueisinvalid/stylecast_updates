@@ -53,3 +53,6 @@ Adjust thresholds dynamically per user	🚧 Not yet	🔜 Connect personal profil
 | Style Tag Filter               | **IQON3000**      | Classifier                |
 | Comfort Feedback Loop          | **User feedback** | NLP + clustering          |
 | Dependency Rules (Tie → Shirt) | **IQON3000**      | Frequency/graph mining    |
+
+
+UPDATE: IQON3000 doesn't work because it's fing JAPANESE
