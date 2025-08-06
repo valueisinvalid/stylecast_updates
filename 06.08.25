@@ -46,3 +46,10 @@ Cluster users: cold-sensitive / heat-tolerant	🚧 Not yet	🔜 Simple rule-base
 Adjust thresholds dynamically per user	🚧 Not yet	🔜 Connect personal profile to scoring logic
 
 
+| Task                           | Dataset           | Model Type                |
+| ------------------------------ | ----------------- | ------------------------- |
+| Weather ↔ Clothing Match       | **My dataset**    | Rule-based + regression   |
+| Color Harmony Score            | **IQON3000**      | Logistic regression or NN |
+| Style Tag Filter               | **IQON3000**      | Classifier                |
+| Comfort Feedback Loop          | **User feedback** | NLP + clustering          |
+| Dependency Rules (Tie → Shirt) | **IQON3000**      | Frequency/graph mining    |
