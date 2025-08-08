@@ -1,0 +1,13 @@
+- Tried scraping the data from LCW & H&M did not work
+- Tried kaggle based dataset and some from github, they are very spesific to one culture ( ex: indian) or merely about image recognition which is not our field
+
+
+- Found a 30-something GB of H&M fashion preferences dataset on Kaggle uploaded by H&M themselves. It has images, types, fabric composition, color.
+
+
+IDEAS
+- Can spot color combinations from the images if there are multiple items involved
+- Parse the datasets to make the thing i need
+
+
+- NEED TO STOP GIVING SO MUCH TIME ON DATASET need to work more
