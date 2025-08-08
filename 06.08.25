@@ -22,6 +22,11 @@ outfit_matching.py
 main.py (to test my logic)
 clothing_dataset.csv
 
+SCRAPPED
+iqon_extractor.py
+iqon_outfits.csv
+translate_iqon_deepl.csv
+translate_iqon1000.csv
 
 
 1. Weather-to-Requirement Model
@@ -55,7 +60,7 @@ Adjust thresholds dynamically per user	🚧 Not yet	🔜 Connect personal profil
 | Dependency Rules (Tie → Shirt) | **IQON3000**      | Frequency/graph mining    |
 
 
-UPDATE: IQON3000 doesn't work because it's fing JAPANESE
+UPDATE: IQON3000 doesn't work because it's fing JAPANESE. currently searching for a new one!
 
 
 next -> try to visualise it!!!
