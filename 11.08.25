@@ -1,0 +1,44 @@
+Used the 30gb H&M database
+
+write the huge logic code - don't know if it's efficient or not yet but goal is to keep it as simple as possible.
+made my first visual combination
+
+
+right now need a OVERLOOK at what i've did and did not.
+
+
+
+output looks like this 
+Weather: {'temperature': 24.8, 'humidity': 50, 'wind': 6.66, 'rain': 0.0, 'snow': 0}
+Required → Breathability > 66.3, Resistance > 13.3
+[INFO] Loaded 105542 items
+       breathability    resistance  water_res  wind_res    warmth
+count       105542.0  1.055420e+05   105542.0  105542.0  105542.0
+mean            55.0  1.510000e+01        7.0      12.0      40.0
+std              0.0  2.104105e-11        0.0       0.0       0.0
+min             55.0  1.510000e+01        7.0      12.0      40.0
+25%             55.0  1.510000e+01        7.0      12.0      40.0
+50%             55.0  1.510000e+01        7.0      12.0      40.0
+75%             55.0  1.510000e+01        7.0      12.0      40.0
+max             55.0  1.510000e+01        7.0      12.0      40.0
+Adjusted thresholds → Breathability ≤ 55.0, Resistance ≤ 13.3
+
+✅ Matching Outfits (1000 found):
+
+Vest top Black Strap top + Trousers Dark Grey Jerry jogger bottoms → B: 55.0, R: 15.1 → Top+Bottom meets thresholds.
+Shirt Black Easy iron L/S shirt  TP + Trousers Dark Grey SWEATPANTS OC → B: 55.0, R: 15.1 → Top+Bottom meets thresholds.
+Shirt Black Easy iron L/S shirt  TP + Trousers Dark Blue SWEATPANTS OC → B: 55.0, R: 15.1 → Top+Bottom meets thresholds.
+Shirt Black Easy iron L/S shirt  TP + Shorts Light Blue Shorts-Sliq-Cut-Off-Bright-Na → B: 55.0, R: 15.1 → Top+Bottom meets thresholds.
+Shirt Black Easy iron L/S shirt  TP + Shorts Beige Reggie chino shorts → B: 55.0, R: 15.1 → Top+Bottom meets thresholds.
+Shirt Black Easy iron L/S shirt  TP + Shorts Dark Blue Reggie chino shorts → B: 55.0, R: 15.1 → Top+Bottom meets thresholds.
+Shirt Black Easy iron L/S shirt  TP + Shorts Black Reggie chino shorts → B: 55.0, R: 15.1 → Top+Bottom meets thresholds.
+Shirt Black Easy iron L/S shirt  TP + Shorts Light Beige Reggie solid chino shorts → B: 55.0, R: 15.1 → Top+Bottom meets thresholds.
+Shirt Black Easy iron L/S shirt  TP + Shorts Light Blue Reggie chino shorts → B: 55.0, R: 15.1 → Top+Bottom meets thresholds.
+Shirt Black Easy iron L/S shirt  TP + Shorts Red Reggie chino shorts → B: 55.0, R: 15.1 → Top+Bottom meets thresholds.
+
+
+CONCERNS:
+- Weather does not read humidity well and fixes it by default to 50
+- Where do we use ML?
+- What is the next step?
+
