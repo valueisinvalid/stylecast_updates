@@ -1,0 +1,77 @@
+what’s good already
+rule-based weather → requirement model (temp/wind/rain) ✔
+fabric parser + breathability/resistance scoring ✔
+outfit generator + first visual mock ✔
+dataset path (H&M) and image folder mapping ✔
+
+quick fixes (1–2 days)
+weather accuracy
+add humidity from meteoblue (you’re defaulting to 50). in your get_weather_data, parse relativehumidity_2m (or equivalent) and pass it into the requirement function. also use “precipitation_probability” if available to push resistance up on high-chance days.
+outfit generator sanity filters
+forbid underwear/beachwear unless user toggles “loungewear”.
+prefer season-appropriate (use your warmth score) and remove “vest + reflective vest” type combos for mild weather by adding “outerwear only if wind>20 km/h or rain_prob>40%” rule.
+cap duplicate colors (e.g., avoid 3 black pieces unless user style tag likes monochrome).
+image lookup util
+write a tiny resolver that, given article_id (e.g., 0194270002), searches subfolders and picks the largest .jpg. cache a map {id: path} on startup to avoid repeated disk scans.
+
+where/when to use ML (incrementally)
+v0 (now) stays rule-based for weather & fabric—fast, interpretable.
+v1 (next) add two small ML pieces that directly improve UX:
+color harmony (used on “Make a Combination 🎲” + “Plan an Outfit”)
+features: HSL/HSV of each item’s dominant color (+ simple contrasts like ∆hue, ∆lightness).
+label: use COLOURlovers palettes (or self-label: 1=clashes, 0=ok) to train a logistic regression → returns harmony probability.
+use it as a re-ranker after your weather filter: score = 0.6*weather_fit + 0.4*color_harmony.
+personal comfort adaptation (used on “Why didn’t it work?” card + stars)
+
+inputs: (temp, humidity, wind) + item warmth/breathability + user rating + free-text (“too hot/cold/sweaty” via a small regex/keyword map).
+
+model: start with user bias + rule shift (no need for big ML):
+
+
+maintain user_delta_warmth, user_delta_breathability.
+if user often rates “too hot”, decrement thresholds next time; “too cold” increments.
+later: a tiny Bayesian linear model per user (or per cluster) to predict comfortable warmth given weather.
+
+data & scoring quality
+your new scoring already produces spread (mean≈55, min 27, max 75) 👍. keep it.
+keep the breathability composed of fabric mix (+ garment modifiers), wind/water mostly from garment type, warmth from type + wool/down content.
+log the distribution per garment type, so you can tune outliers (e.g., “t-shirts with interlock” slightly lower breathability).
+
+backend shape (simple, app-ready)
+/weather?lat=&lon= → returns parsed weather + requirements.
+/items → paginated items with features (type, color, fabric, scores, image_url).
+/outfits?situation=commute|office|gym → returns top N outfits:
+filter by weather → style tags → color harmony → re-rank with user comfort deltas.
+/feedback → {outfit_id, rating, text} → updates user deltas + logs.
+
+metrics to watch
+coverage: % of sessions with ≥5 viable outfits
+CTR: outfit opens / suggestions shown
+save rate & edit rate
+post-wear rating drift (are deltas converging?)
+latency (target <300ms without image)
+week-by-week roadmap (tight)
+week 1 (now)
+
+fix humidity; add rain_prob; add sanity outfit filters.
+implement image resolver & caching.
+add simple persistence for user comfort deltas (json/sqlite).
+
+week 2 (color harmony + style tags)
+extract dominant color per item (k-means on image or use your color_norm if good enough).
+train logistic regression on harmony; integrate as re-ranker.
+define 6–8 style tags (casual, chic, sport, street, minimalist, cozy, business). start rule-based mapping from product text; let user pick tags in UI.
+
+week 3 (personalization loop)
+feedback endpoint, star widget → update deltas.
+“explain” string generator: “Because humidity is high (78%), I favored airy cotton tops and avoided interlock.”
+
+week 4 (quality pass)
+cold/warm edge cases (heatwaves, rain storms).
+add “occasion” filter and footwear logic.
+A/B test color weight 0.2 vs 0.4.
+
+design ↔ logic alignment 
+“Make a Combination”: use the re-ranked top outfit, show 2–3 alternates with different color palettes.
+“Plan an Outfit”: freeze weather snapshot for that time window and warn with a push if forecast shifts → re-suggest.
+“Your Clothes”: once you launch camera ingestion, run the same fabric/color inference; if fabric unknown, ask the user and learn a mapping from brand/line.
